@@ -1,8 +1,8 @@
-.netflix-scroller {
+.slider {
   position: relative;
 }
 
-.netflix-scroller > .cards {
+.slider > .cards {
   display: flex;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -12,11 +12,11 @@
   padding-block: .6rem;
 }
 
-.netflix-scroller .buttons-hidden {
+.slider .buttons-hidden {
   display: none;
 }
 
-.netflix-scroller > .buttons > * {
+.slider > .buttons > * {
   position: absolute;
   width: min-content;
   /* min-height: 100%; */
@@ -28,16 +28,16 @@
   color: black;
 }
 
-.netflix-scroller > .buttons > .left {
+.slider > .buttons > .left {
 }
 
-.netflix-scroller > .cards img {
+.slider > .cards img {
   cursor: pointer;
   transition: all ease-in 0.5s;
   z-index: 10000;
   height: 100%;
 }
 
-.netflix-scroller > .cards img:hover {
+.slider > .cards img:hover {
   transform: scale(1.2);
 }
