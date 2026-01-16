@@ -6,6 +6,28 @@ UI Component to create a Netflix-like Slider.
 
 Made with JavaScript and Bootstrap.
 
+
+## Installation
+
+CDN
+```
+https://simple-slider.giutav.workers.dev/script.js
+
+https://simple-slider.giutav.workers.dev/style.css
+```
+
+HTML 
+```html
+<!-- js -->
+<script src="https://simple-slider.giutav.workers.dev/script.js"></script>
+<!-- css -->
+<script src="https://simple-slider.giutav.workers.dev/style.css"></script>
+```
+
+
+
+## Configuration
+
 HTML
 
 ```html
