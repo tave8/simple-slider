@@ -7,9 +7,21 @@
   overflow-x: hidden;
   overflow-y: hidden;
   flex-wrap: nowrap;
-  gap: .1rem;
+  gap: 0.1rem;
   /* allows the images to move out when scaled */
-  padding-block: .6rem;
+  padding-block: 0.6rem;
+}
+
+.slider > .cards img {
+  cursor: pointer;
+  transition: all ease-in 0.5s;
+  z-index: 10000;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider > .cards img:hover {
+  transform: scale(1.2);
 }
 
 .slider .buttons-hidden {
@@ -29,15 +41,4 @@
 }
 
 .slider > .buttons > .left {
-}
-
-.slider > .cards img {
-  cursor: pointer;
-  transition: all ease-in 0.5s;
-  z-index: 10000;
-  height: 100%;
-}
-
-.slider > .cards img:hover {
-  transform: scale(1.2);
 }

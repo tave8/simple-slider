@@ -1,8 +1,10 @@
 class Slider {
-  constructor({ targetSelector }) {
+  constructor({ targetSelector, scrollBy = 300 }) {
     // valid css selector of the element that
     // we're turning into a slider
     this.targetSelector = targetSelector;
+    // scroll by how many pixels
+    this.scrollBy = scrollBy;
 
     if (document.readyState == "complete") {
       this.init();
@@ -13,9 +15,9 @@ class Slider {
 
   init() {
     this.addButtons();
-    this.showOrHideButtons();
     this.addButtonsShowHideHandler();
     this.positionButtons();
+    this.showOrHideButtons();
   }
 
   addButtons = () => {
@@ -34,7 +36,7 @@ class Slider {
     // FIX: when adding this class first, buttons do not seem
     // to be correctly positioned
     const buttons = scroller.querySelector(".buttons");
-    // buttons.classList.add("buttons-hidden");
+    buttons.classList.add("buttons-hidden");
   };
 
   addButtonsShowHideHandler = () => {
@@ -118,8 +120,12 @@ class Slider {
     return document.querySelector(this.targetSelector);
   }
 
+  getScrollerCards() {
+    return this.getScroller().querySelector(".cards");
+  }
+
   getMoveLeftByFixedAmount = () => {
-    return 300;
+    return this.scrollBy;
   };
 
   getTotalLeftScrollForLeft = (cards) => {
@@ -151,9 +157,37 @@ class Slider {
     return buttons;
   };
 
-  addCard() {}
+  // PREPEND / APPEND
 
-  removeCard() {}
+  prependCards(cardsInfo) {
+    cardsInfo.forEach(cardInfo => {
+      this.prependCard(cardInfo)  
+    })
+  }
+
+  appendCards(cardsInfo) {
+    cardsInfo.forEach(cardInfo => {
+      this.appendCard(cardInfo)  
+    })
+  }
+
+  prependCard(cardInfo) {
+    this.getScrollerCards().prepend(this.createCard(cardInfo));
+  }
+
+  appendCard(cardInfo) {
+    this.getScrollerCards().append(this.createCard(cardInfo));
+  }
+
+  createCard({ imgSrc }) {
+    const card = document.createElement("div");
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    card.appendChild(img);
+    return card;
+  }
+
+  // removeCard() {}
 
   isDesktopDevice = () => {
     // 1. Modern API (Chromium-based browsers)
@@ -167,7 +201,3 @@ class Slider {
     return !mobileRegex.test(navigator.userAgent);
   };
 }
-
-new Slider({
-  targetSelector: "#slider1",
-});
